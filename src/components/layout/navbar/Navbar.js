@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import './navbar.css';
@@ -30,9 +30,18 @@ const Navbar = (props) => {
   }, []);
   */
 
-  /*
   useEffect(() => {
     var prevScrollpos = window.pageYOffset;
+    function hideNav() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById('navbar').style.top = '0';
+      } else {
+        document.getElementById('navbar').style.top = '-170px';
+      }
+      prevScrollpos = currentScrollPos;
+    }
+    /*
     window.onscroll = function () {
       var currentScrollPos = window.pageYOffset;
       if (prevScrollpos > currentScrollPos) {
@@ -42,8 +51,12 @@ const Navbar = (props) => {
       }
       prevScrollpos = currentScrollPos;
     };
+    */
+    window.onscroll = hideNav;
+    return () => {
+      document.removeEventListener('scroll', hideNav);
+    };
   }, []);
-  */
 
   const Burger = () => {
     const [open, setOpen] = useState(false);
@@ -70,13 +83,55 @@ const Navbar = (props) => {
             <div className='navbar-burger' />
           </div>
         </div>
-
-        <Menu open={open} key='menu' />
+        <MenuHolder open={open} key='menu' openMenu={setOpen} />
       </>
     );
   };
 
-  const Menu = ({ open }) => {
+  const MenuHolder = ({ open, openMenu }) => {
+    const node = useRef(null);
+
+    const handleClickOutside = (e) => {
+      if (!node.current.contains(e.target)) {
+        // clicking on child or other (e.g. navbar)
+        return;
+      }
+      // clicking outside (i.e. the menu holder)
+      openMenu(false);
+    };
+
+    useEffect(() => {
+      if (open) {
+        document.addEventListener('mousedown', handleClickOutside);
+      } else {
+        document.removeEventListener('mousedown', handleClickOutside);
+      }
+
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [open]);
+
+    useEffect(() => {
+      console.log(node);
+    }, [node]);
+
+    return (
+      <div
+        className={`menu-holder ${open ? 'open' : ''}`}
+        style={{ display: 'flex' }}
+        ref={node}
+      >
+        <Menu open={open} key='menu' openMenu={openMenu} />
+      </div>
+    );
+  };
+
+  const Menu = ({ open, openMenu }) => {
+    const closeMenu = () => {
+      openMenu(false);
+    };
+
     return (
       <ul className={open ? 'open' : ''}>
         <li>
@@ -85,9 +140,12 @@ const Navbar = (props) => {
             to='about'
             spy={true}
             smooth={true}
-            offset={-170}
+            offset={0}
             duration={500}
             className='nav-item'
+            onClick={() => {
+              closeMenu();
+            }}
           >
             Om oss
           </Link>
@@ -98,9 +156,12 @@ const Navbar = (props) => {
             to='project'
             spy={true}
             smooth={true}
-            offset={-170}
+            offset={0}
             duration={500}
             className='nav-item'
+            onClick={() => {
+              closeMenu();
+            }}
           >
             Projekt
           </Link>
@@ -111,9 +172,12 @@ const Navbar = (props) => {
             to='graphical'
             spy={true}
             smooth={true}
-            offset={-170}
+            offset={0}
             duration={500}
             className='nav-item'
+            onClick={() => {
+              closeMenu();
+            }}
           >
             Grafisk design
           </Link>
@@ -124,9 +188,12 @@ const Navbar = (props) => {
             to='contact'
             spy={true}
             smooth={true}
-            offset={-170}
+            offset={0}
             duration={500}
             className='nav-item'
+            onClick={() => {
+              closeMenu();
+            }}
           >
             Kontakt
           </Link>
