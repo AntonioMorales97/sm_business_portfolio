@@ -1,0 +1,16 @@
+.parent {
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.inner {
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+}

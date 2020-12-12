@@ -1,0 +1,27 @@
+.card {
+  height: 100%;
+  width: auto;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.info-holder {
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  background-color: rgba(0, 0, 0, 0.518);
+  width: auto;
+}
+
+.title,
+.name {
+  padding-bottom: 5px;
+}
+
+span.head {
+  color: rgba(255, 255, 255, 0.4) !important;
+}

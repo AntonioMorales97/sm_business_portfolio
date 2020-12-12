@@ -1,0 +1,26 @@
+.about-hero {
+  background-image: url('../../images/about.jpg') !important;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.about-hero-container {
+  padding-top: 13rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.about-hero-card {
+  max-width: 700px;
+  text-align: start;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  transition: 1s fadein;
+}
+
+.about-hero-container h1 {
+  margin-bottom: 20px;
+}

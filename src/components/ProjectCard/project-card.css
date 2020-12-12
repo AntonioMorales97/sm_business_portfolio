@@ -1,0 +1,10 @@
+#project {
+  height: 300vh;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #project {
+    height: 400vh;
+  }
+}
