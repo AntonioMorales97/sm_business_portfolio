@@ -1,36 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link, animateScroll as scroll } from 'react-scroll';
+import { enableScroll, disableScroll } from '../../../utils/scroll';
+
 import './navbar.css';
 import logo from '../../../images/logo.png';
 
 const Navbar = (props) => {
-  const [scrollState, setScrollState] = useState('top');
-
-  // const [burgerOpen, setBurgerOpen] = useState(false);
-
-  /*
   useEffect(() => {
-    let listener = document.addEventListener('scroll', (e) => {
-      let scrolled = document.scrollingElement.scrollTop;
-      if (scrolled >= 170) {
-        if (scrollState !== 'body') {
-          setScrollState('body');
-        }
-      } else {
-        if (scrollState !== 'top') {
-          setScrollState('top');
-        }
-      }
-    });
-
-    return () => {
-      document.removeEventListener('scroll', listener);
-    };
-  }, []);
-  */
-
-  useEffect(() => {
+    /* Hide Navbar on scroll down (+ CSS) */
     var prevScrollpos = window.pageYOffset;
     function hideNav() {
       var currentScrollPos = window.pageYOffset;
@@ -41,20 +19,11 @@ const Navbar = (props) => {
       }
       prevScrollpos = currentScrollPos;
     }
-    /*
-    window.onscroll = function () {
-      var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.getElementById('navbar').style.top = '0';
-      } else {
-        document.getElementById('navbar').style.top = '-170px';
-      }
-      prevScrollpos = currentScrollPos;
-    };
-    */
     window.onscroll = hideNav;
+
     return () => {
       document.removeEventListener('scroll', hideNav);
+      disableScroll();
     };
   }, []);
 
@@ -63,7 +32,34 @@ const Navbar = (props) => {
 
     const handleKeyDown = (event) => {
       if (event.key === 'Enter') {
-        setOpen(!open);
+        openMenu(!open);
+      }
+    };
+
+    useEffect(() => {
+      /* Close menu on resize lg*/
+      function checkResize() {
+        var width = window.innerWidth;
+        if (width > 768) {
+          if (open) {
+            openMenu(false);
+          }
+        }
+      }
+      window.onresize = checkResize;
+
+      return () => {
+        document.removeEventListener('onresize', checkResize);
+      };
+    }, [open]);
+
+    const openMenu = (shouldOpen) => {
+      if (shouldOpen) {
+        disableScroll();
+        setOpen(true);
+      } else {
+        enableScroll();
+        setOpen(false);
       }
     };
 
@@ -77,13 +73,13 @@ const Navbar = (props) => {
           <div
             className={open ? 'navbar-btn open' : 'navbar-btn'}
             open={open}
-            onClick={() => setOpen(!open)}
+            onClick={() => openMenu(!open)}
             tabIndex='-1'
           >
             <div className='navbar-burger' />
           </div>
         </div>
-        <MenuHolder open={open} key='menu' openMenu={setOpen} />
+        <MenuHolder open={open} key='menu' openMenu={openMenu} />
       </>
     );
   };
@@ -112,9 +108,11 @@ const Navbar = (props) => {
       };
     }, [open]);
 
+    /*
     useEffect(() => {
       console.log(node);
     }, [node]);
+    */
 
     return (
       <div
@@ -128,10 +126,6 @@ const Navbar = (props) => {
   };
 
   const Menu = ({ open, openMenu }) => {
-    const closeMenu = () => {
-      openMenu(false);
-    };
-
     return (
       <ul className={open ? 'open' : ''}>
         <li>
@@ -144,7 +138,7 @@ const Navbar = (props) => {
             duration={500}
             className='nav-item'
             onClick={() => {
-              closeMenu();
+              openMenu(false);
             }}
           >
             Om oss
@@ -160,7 +154,7 @@ const Navbar = (props) => {
             duration={500}
             className='nav-item'
             onClick={() => {
-              closeMenu();
+              openMenu(false);
             }}
           >
             Projekt
@@ -176,7 +170,7 @@ const Navbar = (props) => {
             duration={500}
             className='nav-item'
             onClick={() => {
-              closeMenu();
+              openMenu(false);
             }}
           >
             Grafisk design
@@ -192,7 +186,7 @@ const Navbar = (props) => {
             duration={500}
             className='nav-item'
             onClick={() => {
-              closeMenu();
+              openMenu(false);
             }}
           >
             Kontakt
@@ -203,10 +197,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav
-      className={`navbar ${scrollState === 'top' ? 'dark-nav' : 'light-nav'}`}
-      id='navbar'
-    >
+    <nav className={`navbar dark-nav`} id='navbar'>
       <Link
         to='landing'
         smooth={true}
