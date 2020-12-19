@@ -1,7 +1,7 @@
 # Small Business Portfolio
 
 Created a small business portfolio for a fictional company called East Production. The company works with photography, films, and graphic design.
-Created with React.
+Created with React. [Click here to see live.](https://antoniomorales97.github.io/sm_business_portfolio/#/)
 
 ## Setup
 
