@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/sm_business_portfolio/static/css/main.04130398.chunk.css",
-    "main.js": "/sm_business_portfolio/static/js/main.8a8fa183.chunk.js",
-    "main.js.map": "/sm_business_portfolio/static/js/main.8a8fa183.chunk.js.map",
-    "runtime-main.js": "/sm_business_portfolio/static/js/runtime-main.4f0e96a2.js",
-    "runtime-main.js.map": "/sm_business_portfolio/static/js/runtime-main.4f0e96a2.js.map",
-    "static/js/2.f9c1409b.chunk.js": "/sm_business_portfolio/static/js/2.f9c1409b.chunk.js",
-    "static/js/2.f9c1409b.chunk.js.map": "/sm_business_portfolio/static/js/2.f9c1409b.chunk.js.map",
-    "static/js/3.d385bb9b.chunk.js": "/sm_business_portfolio/static/js/3.d385bb9b.chunk.js",
-    "static/js/3.d385bb9b.chunk.js.map": "/sm_business_portfolio/static/js/3.d385bb9b.chunk.js.map",
+    "main.js": "/sm_business_portfolio/static/js/main.b46b3581.chunk.js",
+    "main.js.map": "/sm_business_portfolio/static/js/main.b46b3581.chunk.js.map",
+    "runtime-main.js": "/sm_business_portfolio/static/js/runtime-main.0ed7b21d.js",
+    "runtime-main.js.map": "/sm_business_portfolio/static/js/runtime-main.0ed7b21d.js.map",
+    "static/js/2.c2bd11f2.chunk.js": "/sm_business_portfolio/static/js/2.c2bd11f2.chunk.js",
+    "static/js/2.c2bd11f2.chunk.js.map": "/sm_business_portfolio/static/js/2.c2bd11f2.chunk.js.map",
+    "static/js/3.0c26b3a8.chunk.js": "/sm_business_portfolio/static/js/3.0c26b3a8.chunk.js",
+    "static/js/3.0c26b3a8.chunk.js.map": "/sm_business_portfolio/static/js/3.0c26b3a8.chunk.js.map",
     "index.html": "/sm_business_portfolio/index.html",
     "static/css/main.04130398.chunk.css.map": "/sm_business_portfolio/static/css/main.04130398.chunk.css.map",
-    "static/js/2.f9c1409b.chunk.js.LICENSE.txt": "/sm_business_portfolio/static/js/2.f9c1409b.chunk.js.LICENSE.txt",
+    "static/js/2.c2bd11f2.chunk.js.LICENSE.txt": "/sm_business_portfolio/static/js/2.c2bd11f2.chunk.js.LICENSE.txt",
     "static/media/App.css": "/sm_business_portfolio/static/media/Roboto-Medium.13a29228.ttf",
     "static/media/about-card.css": "/sm_business_portfolio/static/media/about.8828ba0a.jpg",
     "static/media/beach.0995ec57.jpg": "/sm_business_portfolio/static/media/beach.0995ec57.jpg",
@@ -29,9 +29,9 @@
     "static/media/viber.439a2413.png": "/sm_business_portfolio/static/media/viber.439a2413.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.4f0e96a2.js",
-    "static/js/2.f9c1409b.chunk.js",
+    "static/js/runtime-main.0ed7b21d.js",
+    "static/js/2.c2bd11f2.chunk.js",
     "static/css/main.04130398.chunk.css",
-    "static/js/main.8a8fa183.chunk.js"
+    "static/js/main.b46b3581.chunk.js"
   ]
 }
